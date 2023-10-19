@@ -56,6 +56,7 @@ namespace Lesson_6.Tumakow
     {
         static void Main(string[] args)
         {
+            Console.WriteLine("Упражнение 7.1");
             BankAccount счет = new BankAccount("742672484", 450000, TypeOfBankAcc.Deposit);
             счет.Displayinformation();
             счет.SetBalance(30000);
