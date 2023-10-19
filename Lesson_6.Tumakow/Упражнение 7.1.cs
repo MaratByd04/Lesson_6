@@ -11,7 +11,7 @@ namespace Lesson_6.Tumakow
         Deposit,
         Savings
     }
-
+    // класс для упражнения 7.1
     class BankAccount
     {
         private string numberOfBankAccount;
@@ -52,15 +52,46 @@ namespace Lesson_6.Tumakow
             Console.WriteLine($"Тип счета: {typeOfBankAcc}");
         }
     }
+
+    class BankAccount2
+    {
+        private static int nextAccountNumber = 1;
+
+        public int AccountNumber { get; private set; }
+        public decimal Balance { get; private set; }
+
+        public BankAccount2(decimal initialBalance)
+        {
+            AccountNumber = nextAccountNumber++;
+            Balance = initialBalance;
+        }
+
+        public void Deposit(decimal amount)
+        {
+            if (amount > 0)
+                Balance += amount;
+            else
+                Console.WriteLine("Неверная сумма депозита.");
+        }
+
+        public void Withdraw(decimal amount)
+        {
+            if (amount > 0 && Balance >= amount)
+                Balance -= amount;
+            else
+                Console.WriteLine("Неверная сумма вывода или недостаточно средств.");
+        }
+    }
     class Program
     {
         static void Main(string[] args)
         {
             Console.WriteLine("Упражнение 7.1");
-            BankAccount счет = new BankAccount("742672484", 450000, TypeOfBankAcc.Deposit);
-            счет.Displayinformation();
-            счет.SetBalance(30000);
-            счет.Displayinformation();
+            BankAccount account1 = new BankAccount("742672484", 450000, TypeOfBankAcc.Deposit);
+            account1.Displayinformation();
+            account1.SetBalance(30000);
+            account1.Displayinformation();
+            
         }
-    }
+    }  
 }
